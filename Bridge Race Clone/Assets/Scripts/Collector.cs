@@ -9,9 +9,11 @@ public class Collector : MonoBehaviour
     public int numberOfItemsHolding = 0;
     public int obstacleNumber;
     BagSpawner spawner;
+    Animator anim;
     void Start()
     {
-        spawner = FindObjectOfType<BagSpawner>();   
+        spawner = FindObjectOfType<BagSpawner>();
+        anim = GetComponent<Animator>(); 
     }
     public void AddNewItem(Transform itemToAdd)
     {
@@ -40,6 +42,10 @@ public class Collector : MonoBehaviour
         if(other.gameObject.CompareTag("Obstacle") && numberOfItemsHolding > 0)
         {
             other.gameObject.GetComponent<BoxCollider>().enabled = false;
+        }
+        if(other.gameObject.CompareTag("Trophy"))
+        {
+            anim.SetBool("isTrophy", true);
         }
     }
 }

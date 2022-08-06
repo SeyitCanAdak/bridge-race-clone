@@ -11,6 +11,7 @@ TagManager:
   - Item
   - Bridge
   - Obstacle
+  - Trophy
   layers:
   - Default
   - TransparentFX
