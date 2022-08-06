@@ -10,10 +10,12 @@ public class Collector : MonoBehaviour
     public int obstacleNumber;
     BagSpawner spawner;
     Animator anim;
+    PlayerMovement movement;
     void Start()
     {
         spawner = FindObjectOfType<BagSpawner>();
-        anim = GetComponent<Animator>(); 
+        anim = GetComponent<Animator>();
+        movement = GetComponent<PlayerMovement>();
     }
     public void AddNewItem(Transform itemToAdd)
     {
@@ -46,6 +48,8 @@ public class Collector : MonoBehaviour
         if(other.gameObject.CompareTag("Trophy"))
         {
             anim.SetBool("isTrophy", true);
+            movement.enabled = false;
+            transform.Rotate(0,180,0);
         }
     }
 }
